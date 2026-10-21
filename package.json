@@ -1,0 +1,69 @@
+{
+  "name": "sysdesign-board",
+  "version": "0.1.0",
+  "description": "A hand-drawn whiteboard for system design interviews, with an MCP server so Claude or ChatGPT can act as your interviewer: it sees your board, listens, talks and points at your diagram.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "system-design",
+    "interview",
+    "whiteboard",
+    "claude",
+    "chatgpt",
+    "excalidraw",
+    "mock-interview"
+  ],
+  "license": "MIT",
+  "author": "Tamer Ghattas",
+  "type": "module",
+  "bin": {
+    "sysdesign-board": "server/dist/index.js"
+  },
+  "files": [
+    "server/dist",
+    "web/dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n hub,web \"npm:dev:hub\" \"npm:dev:web\"",
+    "dev:hub": "tsx watch server/src/index.ts --hub-only",
+    "dev:web": "vite",
+    "build": "npm run build:web && npm run build:server",
+    "build:web": "vite build",
+    "build:server": "esbuild server/src/index.ts --bundle --platform=node --target=node18 --format=esm --define:__VERSION__=\\\"0.1.0\\\"  --outfile=server/dist/index.js --external:bufferutil --external:utf-8-validate --banner:js=\"#!/usr/bin/env node\nimport { createRequire as __cr } from 'module'; const require = __cr(import.meta.url);\"",
+    "start": "node server/dist/index.js --hub-only",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p server/tsconfig.json",
+    "inspect": "npx @modelcontextprotocol/inspector node server/dist/index.js",
+    "build:mcpb": "node scripts/build-mcpb.mjs",
+    "install:claude": "node server/dist/index.js install",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2",
+    "@fontsource/caveat": "^5.3.0",
+    "@fontsource/kalam": "^5.3.0",
+    "@fontsource/nunito": "^5.3.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.5",
+    "esbuild": "^0.28.2",
+    "lucide-react": "^1.61.0",
+    "perfect-freehand": "^1.2.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "roughjs": "^4.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^6.4.5",
+    "ws": "^8.22.0",
+    "zod": "^4.6.7"
+  }
+}

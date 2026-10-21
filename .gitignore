@@ -1,0 +1,7 @@
+node_modules
+web/dist
+server/dist
+.DS_Store
+.claude/
+*.mcpb
+build/

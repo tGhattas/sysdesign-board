@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <pattern id="hb" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-41)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#4dabf7" stroke-width="4"/>
+    </pattern>
+    <pattern id="ho" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-41)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#ffa94d" stroke-width="4"/>
+    </pattern>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#fbfaf6"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="#e7e1d4" stroke-width="6"/>
+  <g fill="#d8d2c4">
+    <circle cx="96" cy="96" r="5"/><circle cx="176" cy="96" r="5"/><circle cx="256" cy="96" r="5"/><circle cx="336" cy="96" r="5"/><circle cx="416" cy="96" r="5"/>
+    <circle cx="96" cy="416" r="5"/><circle cx="176" cy="416" r="5"/><circle cx="256" cy="416" r="5"/>
+  </g>
+  <!-- client box -->
+  <path d="M92 150 Q90 128 112 127 L232 124 Q254 124 255 146 L258 226 Q259 248 236 249 L114 252 Q92 252 91 230 Z" fill="url(#hb)"/>
+  <path d="M92 150 Q90 128 112 127 L232 124 Q254 124 255 146 L258 226 Q259 248 236 249 L114 252 Q92 252 91 230 Z M95 148 Q94 131 113 130 L231 128" fill="none" stroke="#1f2328" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 168 L226 166" stroke="#1f2328" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="132" cy="150" r="6" fill="#1f2328"/><circle cx="152" cy="150" r="6" fill="#1f2328"/>
+  <path d="M124 200 Q170 196 210 199" stroke="#1971c2" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M124 222 Q160 219 188 221" stroke="#1f2328" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <!-- arrow -->
+  <path d="M262 190 Q330 182 352 236 Q366 270 362 302" fill="none" stroke="#1f2328" stroke-width="10" stroke-linecap="round"/>
+  <path d="M336 282 L362 312 L386 280" fill="none" stroke="#1f2328" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- database -->
+  <path d="M286 338 L286 412 Q290 446 362 446 Q434 446 438 412 L438 338 Z" fill="url(#ho)"/>
+  <ellipse cx="362" cy="338" rx="76" ry="24" fill="#ffd8a8"/>
+  <path d="M286 340 L287 414 Q292 447 362 447 Q434 447 437 413 L438 337" fill="none" stroke="#1f2328" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="362" cy="338" rx="76" ry="24" fill="none" stroke="#1f2328" stroke-width="9"/>
+  <path d="M290 378 Q362 404 434 377" fill="none" stroke="#1f2328" stroke-width="6" stroke-linecap="round"/>
+  <!-- pencil scribble -->
+  <path d="M84 318 Q118 296 146 322 Q170 346 204 320" fill="none" stroke="#e64980" stroke-width="9" stroke-linecap="round"/>
+</svg>
