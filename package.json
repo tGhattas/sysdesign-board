@@ -49,7 +49,8 @@
     "build:mcpb": "node scripts/build-mcpb.mjs",
     "install:claude": "node server/dist/index.js install",
     "prepublishOnly": "npm run typecheck && npm run build",
-    "version": "node scripts/sync-version.mjs && git add server.json plugin/.claude-plugin/plugin.json plugin/.mcp.json"
+    "version": "node scripts/sync-version.mjs && git add server.json plugin/.claude-plugin/plugin.json plugin/package.json",
+    "lock:plugin": "npm install --prefix plugin --package-lock-only --ignore-scripts --no-audit --no-fund"
   },
   "devDependencies": {
     "@anthropic-ai/mcpb": "^2.1.2",

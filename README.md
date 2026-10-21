@@ -195,6 +195,15 @@ npm run dev
 | `npm run build:mcpb` | Packs `build/sysdesign-board-<version>.mcpb` |
 | `npm run typecheck` | Type-checks the web and server code |
 | `node scripts/mcp-smoke.mjs` | Drives every MCP tool against a running board |
+| `npm run lock:plugin` | Refreshes the Claude plugin's `package-lock.json` (run after the new version is on npm) |
+
+**Releasing a new version:**
+1. Run `npm version <x.y.z> --no-git-tag-version`. This also updates `server.json` and the plugin's version and pinned dependency.
+2. Run `npm publish`.
+3. Run `npm run lock:plugin`. The lockfile needs the published package's checksum, so this comes after publishing.
+4. Commit, then tag and push.
+5. Make a GitHub release with `npm run build:mcpb`.
+6. Run `mcp-publisher publish` for the MCP Registry.
 
 The code lives in three folders:
 

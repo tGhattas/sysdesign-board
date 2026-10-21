@@ -25,7 +25,7 @@ Example prompts:
 
 ## What it runs and what it sends
 
-- **What it runs:** the MCP server, the npm package `sysdesign-board`, pinned to an exact version and started with `npx`. It runs a small web server bound to `127.0.0.1` that serves the board page and syncs it over a local WebSocket.
+- **What it runs:** the MCP server, the npm package `sysdesign-board`. It's pinned to an exact version with its checksum in `package-lock.json`. Claude Code installs it from that lockfile when you install the plugin (with install scripts disabled) and starts it with `node`. It runs a small web server bound to `127.0.0.1` that serves the board page and syncs it over a local WebSocket. The package has no dependencies of its own.
 - **What it connects to:** nothing beyond your machine. It has no telemetry, no analytics and no accounts. The board, its API and its WebSocket refuse requests that don't come from localhost.
 - **What it writes:** board and chat state to `~/.sysdesign-board/`. It also opens the board URL in your default browser.
 - **What reaches Claude:** whatever the tools return when Claude calls them: the board description, a picture of the board, your messages and your transcripts.

@@ -1,0 +1,9 @@
+{
+  "name": "sysdesign-board-plugin",
+  "private": true,
+  "description": "Pins the sysdesign-board MCP server for the Claude plugin. Claude Code installs it from package-lock.json.",
+  "license": "MIT",
+  "dependencies": {
+    "sysdesign-board": "0.1.2"
+  }
+}

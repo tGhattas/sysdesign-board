@@ -1,10 +1,9 @@
 {
   "mcpServers": {
     "sysdesign-board": {
-      "command": "npx",
+      "command": "node",
       "args": [
-        "-y",
-        "sysdesign-board@0.1.2"
+        "${CLAUDE_PLUGIN_ROOT}/node_modules/sysdesign-board/server/dist/index.js"
       ]
     }
   }

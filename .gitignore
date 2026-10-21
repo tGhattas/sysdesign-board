@@ -5,3 +5,4 @@ server/dist
 .claude/
 *.mcpb
 build/
+plugin/node_modules
