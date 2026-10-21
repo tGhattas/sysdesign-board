@@ -15,6 +15,14 @@
   ],
   "license": "MIT",
   "author": "Tamer Ghattas",
+  "homepage": "https://github.com/tGhattas/sysdesign-board#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tGhattas/sysdesign-board.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tGhattas/sysdesign-board/issues"
+  },
   "type": "module",
   "bin": {
     "sysdesign-board": "server/dist/index.js"
