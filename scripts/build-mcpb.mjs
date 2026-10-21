@@ -45,7 +45,10 @@ const manifest = {
   description: 'A hand-drawn whiteboard for system design mock interviews. Claude watches your board, listens, asks questions and gives feedback.',
   long_description:
     'Draw your architecture on a pencil-style whiteboard in your browser — load balancers, caches, databases, queues and more — while Claude plays a realistic system design interviewer. It reads your diagram, looks at your sketches, talks with you by text or voice, pins questions on your components and ends with scored feedback. Everything runs locally on your machine.',
-  author: { name: pkg.author },
+  author: { name: pkg.author, url: 'https://github.com/tGhattas' },
+  repository: { type: 'git', url: pkg.repository.url.replace(/^git\+/, '') },
+  homepage: pkg.homepage,
+  support: pkg.bugs.url,
   license: pkg.license,
   keywords: pkg.keywords,
   icon: 'icon.png',
