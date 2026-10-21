@@ -1,6 +1,6 @@
 {
   "name": "sysdesign-board",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A hand-drawn whiteboard for system design interviews, with an MCP server so Claude or ChatGPT can act as your interviewer: it sees your board, listens, talks and points at your diagram.",
   "keywords": [
     "mcp",
@@ -42,7 +42,7 @@
     "dev:web": "vite",
     "build": "npm run build:web && npm run build:server",
     "build:web": "vite build",
-    "build:server": "esbuild server/src/index.ts --bundle --platform=node --target=node18 --format=esm --define:__VERSION__=\\\"0.1.0\\\"  --outfile=server/dist/index.js --external:bufferutil --external:utf-8-validate --banner:js=\"#!/usr/bin/env node\nimport { createRequire as __cr } from 'module'; const require = __cr(import.meta.url);\"",
+    "build:server": "node scripts/build-server.mjs",
     "start": "node server/dist/index.js --hub-only",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p server/tsconfig.json",
     "inspect": "npx @modelcontextprotocol/inspector node server/dist/index.js",
