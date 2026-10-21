@@ -26,7 +26,7 @@ export function createMcpServer(api: BoardApi) {
 
   server.registerTool(
     'open_board',
-    { title: 'Open the board', description: 'Open the sketch board in the user’s browser and return its URL.', inputSchema: {} },
+    { title: 'Open the board', description: 'Open the sketch board in the user’s browser and return its URL.', inputSchema: {}, annotations: { title: 'Open the board', readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false } },
     async () => {
       try {
         const r = await api.openBoard();
@@ -41,6 +41,7 @@ export function createMcpServer(api: BoardApi) {
     'start_interview',
     {
       title: 'Start a system design interview',
+      annotations: { title: 'Start a system design interview', readOnlyHint: false, destructiveHint: true, openWorldHint: false },
       description: 'Start a new interview session on the board: sets the problem statement, timer and phase, opens the board, and posts your opening message (spoken aloud to the candidate).',
       inputSchema: {
         title: z.string().describe('Short problem title, e.g. "Design a URL shortener"'),
@@ -67,10 +68,10 @@ export function createMcpServer(api: BoardApi) {
     'wait_for_candidate',
     {
       title: 'Listen to the candidate',
+      annotations: { title: 'Listen to the candidate', readOnlyHint: true, openWorldHint: false },
       description:
         'Block until the candidate says something (typed or by voice), the board changes and then settles, or the timeout passes. Returns what they said, what changed on the board, and interview timing. Call this in a loop between your replies.',
       inputSchema: { timeout_seconds: z.number().int().min(5).max(110).optional().describe('Default 45. Keep under your client’s tool timeout.') },
-      annotations: { readOnlyHint: true },
     },
     async (a) => {
       try {
@@ -96,6 +97,7 @@ export function createMcpServer(api: BoardApi) {
     'say',
     {
       title: 'Speak to the candidate',
+      annotations: { title: 'Speak to the candidate', readOnlyHint: false, destructiveHint: false, openWorldHint: false },
       description: 'Send a message to the candidate. It appears in the board chat and is read aloud. Keep it short and conversational (no markdown).',
       inputSchema: { text: z.string().min(1), speak: z.boolean().optional().describe('Read aloud (default true)') },
     },
@@ -113,9 +115,9 @@ export function createMcpServer(api: BoardApi) {
     'get_board',
     {
       title: 'Read the board',
+      annotations: { title: 'Read the board', readOnlyHint: true, openWorldHint: false },
       description: 'Structured description of the board: components (type, label, id, position, zone), connections (from -> to, label, dashed=async), zones, notes and text, freehand strokes, plus what changed since you last looked.',
       inputSchema: { include_json: z.boolean().optional().describe('Also return raw element JSON (verbose)') },
-      annotations: { readOnlyHint: true },
     },
     async (a) => {
       try {
@@ -135,9 +137,9 @@ export function createMcpServer(api: BoardApi) {
     'get_board_image',
     {
       title: 'Look at the board',
+      annotations: { title: 'Look at the board', readOnlyHint: true, openWorldHint: false },
       description: 'A PNG picture of the whole board as the candidate sees it (handwriting, sketches, layout). Use when get_board mentions freehand strokes or you need visual context.',
       inputSchema: {},
-      annotations: { readOnlyHint: true },
     },
     async () => {
       try {
@@ -154,6 +156,7 @@ export function createMcpServer(api: BoardApi) {
     'annotate',
     {
       title: 'Pin a comment on the board',
+      annotations: { title: 'Pin a comment on the board', readOnlyHint: false, destructiveHint: false, openWorldHint: false },
       description: 'Pin an interviewer comment bubble on the board, pointing at a component (by id or label) or at a position. Great for "what if this fails?" style probes.',
       inputSchema: {
         text: z.string().min(1).max(400),
@@ -176,6 +179,7 @@ export function createMcpServer(api: BoardApi) {
     'highlight',
     {
       title: 'Point at components',
+      annotations: { title: 'Point at components', readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
       description: 'Make components glow on the candidate’s board (e.g. while asking about them). Optionally scroll/zoom their view to them.',
       inputSchema: { targets: z.array(z.string()).min(1).describe('Element ids or labels'), seconds: z.number().min(1).max(20).optional(), focus: z.boolean().optional() },
     },
@@ -193,6 +197,7 @@ export function createMcpServer(api: BoardApi) {
     'draw_on_board',
     {
       title: 'Draw on the board',
+      annotations: { title: 'Draw on the board', readOnlyHint: false, destructiveHint: false, openWorldHint: false },
       description: `Add components, connections, sticky notes and zones in the same sketchy style (marked as drawn by the interviewer). Use sparingly — the candidate should drive. Component kinds: ${KINDS}. Connections reference a component by its ref/label (new or existing) or id. Positions are optional (auto-laid out to the right of existing content).`,
       inputSchema: {
         components: z
@@ -219,6 +224,7 @@ export function createMcpServer(api: BoardApi) {
     'clear_annotations',
     {
       title: 'Remove interviewer comments',
+      annotations: { title: 'Remove interviewer comments', readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: false },
       description: 'Remove your pinned comments (all, or specific ids).',
       inputSchema: { ids: z.array(z.string()).optional() },
     },
@@ -236,6 +242,7 @@ export function createMcpServer(api: BoardApi) {
     'set_phase',
     {
       title: 'Move to an interview phase',
+      annotations: { title: 'Move to an interview phase', readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
       description: `Update the phase tracker the candidate sees: ${PHASES.map((p) => `${p.id} (${p.label})`).join(', ')}.`,
       inputSchema: { phase: z.enum(PHASE_IDS) },
     },
@@ -253,6 +260,7 @@ export function createMcpServer(api: BoardApi) {
     'end_interview',
     {
       title: 'End the interview with feedback',
+      annotations: { title: 'End the interview with feedback', readOnlyHint: false, destructiveHint: false, openWorldHint: false },
       description: 'Close the session and show a feedback card on the board. Scores are 1-5.',
       inputSchema: {
         summary: z.string().describe('2-4 sentence overall assessment'),
@@ -284,7 +292,7 @@ export function createMcpServer(api: BoardApi) {
 
   server.registerTool(
     'get_transcript',
-    { title: 'Conversation transcript', description: 'Full chat/voice transcript of the current session.', inputSchema: {}, annotations: { readOnlyHint: true } },
+    { title: 'Conversation transcript', description: 'Full chat/voice transcript of the current session.', inputSchema: {}, annotations: { title: 'Conversation transcript', readOnlyHint: true, openWorldHint: false } },
     async () => {
       try {
         const r = await api.transcript();

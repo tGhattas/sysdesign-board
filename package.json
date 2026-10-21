@@ -1,6 +1,6 @@
 {
   "name": "sysdesign-board",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A hand-drawn whiteboard for system design interviews, with an MCP server so Claude or ChatGPT can act as your interviewer: it sees your board, listens, talks and points at your diagram.",
   "keywords": [
     "mcp",
@@ -48,7 +48,8 @@
     "inspect": "npx @modelcontextprotocol/inspector node server/dist/index.js",
     "build:mcpb": "node scripts/build-mcpb.mjs",
     "install:claude": "node server/dist/index.js install",
-    "prepublishOnly": "npm run typecheck && npm run build"
+    "prepublishOnly": "npm run typecheck && npm run build",
+    "version": "node scripts/sync-version.mjs && git add server.json plugin/.claude-plugin/plugin.json plugin/.mcp.json"
   },
   "devDependencies": {
     "@anthropic-ai/mcpb": "^2.1.2",
@@ -73,5 +74,6 @@
     "vite": "^6.4.5",
     "ws": "^8.22.0",
     "zod": "^4.6.7"
-  }
+  },
+  "mcpName": "io.github.tGhattas/sysdesign-board"
 }

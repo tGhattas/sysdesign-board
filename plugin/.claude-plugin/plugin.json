@@ -1,0 +1,25 @@
+{
+  "name": "sysdesign-board",
+  "displayName": "sketch/design — System Design Interview Board",
+  "version": "0.1.2",
+  "description": "A hand-drawn whiteboard for system design mock interviews. Claude watches your board, listens, asks questions and gives scored feedback.",
+  "author": {
+    "name": "Tamer Ghattas",
+    "url": "https://github.com/tGhattas"
+  },
+  "homepage": "https://github.com/tGhattas/sysdesign-board#readme",
+  "repository": "https://github.com/tGhattas/sysdesign-board",
+  "license": "MIT",
+  "keywords": [
+    "system-design",
+    "interview",
+    "mock-interview",
+    "whiteboard",
+    "diagram",
+    "interview-prep"
+  ],
+  "icon": "./icon.png",
+  "documentationUrl": "https://github.com/tGhattas/sysdesign-board#readme",
+  "supportUrl": "https://github.com/tGhattas/sysdesign-board/issues",
+  "privacyPolicyUrl": "https://github.com/tGhattas/sysdesign-board/blob/main/PRIVACY.md"
+}

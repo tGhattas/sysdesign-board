@@ -1,0 +1,14 @@
+{
+  "name": "sysdesign-board",
+  "owner": {
+    "name": "Tamer Ghattas",
+    "url": "https://github.com/tGhattas"
+  },
+  "plugins": [
+    {
+      "name": "sysdesign-board",
+      "source": "./plugin",
+      "description": "A hand-drawn whiteboard for system design mock interviews. Claude watches your board, listens, asks questions and gives scored feedback."
+    }
+  ]
+}

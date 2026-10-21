@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.tGhattas/sysdesign-board",
+  "title": "sketch/design — System Design Interview Board",
+  "description": "Hand-drawn whiteboard for system design mock interviews; your AI watches, asks and gives feedback.",
+  "websiteUrl": "https://github.com/tGhattas/sysdesign-board#readme",
+  "repository": {
+    "url": "https://github.com/tGhattas/sysdesign-board",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/tGhattas/sysdesign-board/main/assets/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "version": "0.1.2",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "sysdesign-board",
+      "version": "0.1.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "SYSDESIGN_PORT",
+          "description": "Local port for the whiteboard page (http://localhost:<port>). Defaults to 4321.",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "number",
+          "default": "4321"
+        }
+      ]
+    }
+  ]
+}

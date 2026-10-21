@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "sysdesign-board": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "sysdesign-board@0.1.2"
+      ]
+    }
+  }
+}

@@ -55,8 +55,17 @@ On Windows, use `"command": "cmd", "args": ["/c", "npx", "-y", "sysdesign-board"
 
 ### Claude Code
 
+Either add the server directly:
+
 ```bash
 claude mcp add sysdesign-board -- npx -y sysdesign-board
+```
+
+Or install the plugin, which also adds an interview skill, from this repo's marketplace. Run these inside Claude Code:
+
+```
+/plugin marketplace add tGhattas/sysdesign-board
+/plugin install sysdesign-board@sysdesign-board
 ```
 
 ### Codex CLI
@@ -136,12 +145,22 @@ The board also works without any AI: run `npx -y sysdesign-board serve` and open
 
 `V` select · `H` hand / hold `Space` · `R` rect · `D` diamond · `O` ellipse · `A` arrow · `L` line · `P` pen · `T` text · `N` sticky note · `F` zone · `E` eraser · `K` laser · `C` components · `I` interview panel · `Q` tool lock · `G` grid snap · `⌘/Ctrl Z` undo · `⌘/Ctrl D` duplicate · `⇧1` fit · `?` all shortcuts
 
-## Privacy & security
+## Privacy Policy
 
-- Everything stays on your machine. The board state is saved in your browser and in `~/.sysdesign-board/`.
-- The board, its API and its WebSocket only answer `localhost` requests from `localhost` pages. Other websites and tunnels are refused, which also blocks DNS-rebinding attacks.
-- The HTTP MCP endpoint (`/mcp`) always requires the token. stdio clients (Claude Desktop, Claude Code, Codex) don't use it.
-- What you draw and say goes to the AI app you connected, under that app's own terms.
+The full policy is in [PRIVACY.md](PRIVACY.md). In short:
+
+- **What it handles:** your board, the interview chat and voice transcripts, your settings, and a local access token.
+- **Where it's stored:** only on your machine, in the browser's local storage for the board page and in `~/.sysdesign-board/`. The author runs no server, and there are no accounts, analytics or telemetry.
+- **What leaves your computer:**
+  - When the AI interviewer calls a tool, the AI app you connected receives the board description, a picture of the board, your messages and your transcripts, under that provider's privacy policy.
+  - The mic uses your browser's speech recognition. Chrome sends the audio to Google; Safari uses Apple's speech service.
+  - `npx` downloads the package from npm.
+  - With the optional tunnel, `/mcp` requests pass through the tunnel provider.
+- **Security:**
+  - The board, its API and its WebSocket only answer `localhost` requests from `localhost` pages. Other websites and tunnels are refused, which also blocks DNS-rebinding attacks.
+  - The HTTP endpoint (`/mcp`) always requires the token.
+- **Sharing and retention:** nothing is sold or shared. Data stays until you clear the board or delete `~/.sysdesign-board/`.
+- **Contact:** [open an issue](https://github.com/tGhattas/sysdesign-board/issues).
 
 ## Troubleshooting
 

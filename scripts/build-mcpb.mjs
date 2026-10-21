@@ -49,6 +49,7 @@ const manifest = {
   repository: { type: 'git', url: pkg.repository.url.replace(/^git\+/, '') },
   homepage: pkg.homepage,
   support: pkg.bugs.url,
+  privacy_policies: ['https://github.com/tGhattas/sysdesign-board/blob/main/PRIVACY.md'],
   license: pkg.license,
   keywords: pkg.keywords,
   icon: 'icon.png',
