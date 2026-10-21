@@ -206,7 +206,7 @@ export function InterviewPanel() {
           <textarea
             rows={1}
             value={text}
-            placeholder={session ? 'Explain your thinking, ask a question…' : 'Message the interviewer…'}
+            placeholder={session ? 'Explain your thinking…' : 'Message the interviewer…'}
             onChange={(e) => {
               setText(e.target.value);
               e.target.style.height = 'auto';

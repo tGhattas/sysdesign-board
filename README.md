@@ -2,7 +2,7 @@
 
 A hand-drawn whiteboard for system design mock interviews, plus an MCP server that turns **Claude or ChatGPT into your interviewer**. It sees your board, listens to you, talks back, pins questions on your components, and ends with scored feedback.
 
-<!-- TODO: add a 20–30s demo GIF here: docs/demo.gif -->
+![A mock interview in progress: a URL shortener diagram, an interviewer question pinned on Redis, and the voice/text chat](docs/screenshot.png)
 
 - **Pencil-style canvas**: a paper or chalkboard theme, with shapes that look drawn by hand (rough.js + perfect-freehand)
 - **27 system design components**: load balancer, API gateway, CDN, cache, SQL and NoSQL databases, object store, queue, Kafka-style stream, pub/sub, workers, serverless functions, auth, monitoring, ML and more
